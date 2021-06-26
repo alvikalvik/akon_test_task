@@ -2,7 +2,8 @@ import * as axios from 'axios';
 
 const instance = axios.create({
     withCredentials: true,
-    baseURL: 'http://localhost/akon_test_task/public/',    
+    // baseURL: 'http://localhost/akon_test_task/public/',    
+    baseURL: 'http://trgaz.com/akon',    
 });
 
 export const dbAPI = {

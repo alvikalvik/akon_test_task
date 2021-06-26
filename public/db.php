@@ -1,11 +1,14 @@
 <?php
 $servername = "localhost";
-$username = "akonuser";
+// $username = "akonuser";
+$username = "trgaz_akonuser";
 $password = "akonuserpass";
-$dbname = "akon";
+// $dbname = "akon";
+$dbname = "trgaz_akon";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
+mysqli_set_charset($conn, 'utf8');
 // Check connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
@@ -14,9 +17,9 @@ if ($conn->connect_error) {
 $tablename = htmlspecialchars($_GET["tablename"]);
 
 if ($tablename === nomenclaturestest) {
-    $channel1 = htmlspecialchars($_GET["channel1"]);    
+    $channel1 = htmlspecialchars($_GET["channel1"]); 
     $channel2 = htmlspecialchars($_GET["channel2"]);
-    $channel3 = htmlspecialchars($_GET["channel3"]);    
+    $channel3 = htmlspecialchars($_GET["channel3"]);  
 
     if ($channel1 && $channel2 && $channel3) {
         $sql = "SELECT * FROM `$tablename` WHERE (channels LIKE '$channel1,$channel2,$channel3' AND channels LIKE '%,%,%') OR (channels LIKE '$channel1,$channel2' AND channels NOT LIKE '%,%,%') ";
