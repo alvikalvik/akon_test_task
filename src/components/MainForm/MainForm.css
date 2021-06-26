@@ -1,0 +1,15 @@
+.main-form-selects-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-form-selects-wrapper select {
+    display: block;
+    margin: 0 5px;
+}
+
+.main-form-btn {
+    display: block;
+    margin: 15px auto 0 auto;
+}

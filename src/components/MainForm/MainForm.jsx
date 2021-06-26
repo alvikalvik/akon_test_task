@@ -1,4 +1,5 @@
 
+import './MainForm.css';
 import Preloader from "../common/Preloader/Preloader";
 import { Formik, Form, Field } from 'formik';
 
@@ -33,8 +34,8 @@ const MainForm = ({ isInitialised, isFetching, signalsData, rangesData, wiresDat
             }}
         >
             { () => (
-                <Form>
-                    <div>                        
+                <Form className="main-form">
+                    <div className="main-form-selects-wrapper">                        
                         <Field as="select" name="signalsInput" id="signalsInput">
                             <option value="%">-</option>
                             {signalsOptions}
@@ -53,7 +54,11 @@ const MainForm = ({ isInitialised, isFetching, signalsData, rangesData, wiresDat
                     </div>
                     
                     
-                    <button type="submit" disabled={isFetching}>
+                    <button
+                        className="main-form-btn"
+                        type="submit"
+                        disabled={isFetching}
+                    >
                         Сделать выборку
                     </button>
                 </Form>

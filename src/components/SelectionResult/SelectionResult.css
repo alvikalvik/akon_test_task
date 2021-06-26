@@ -1,0 +1,10 @@
+.selection-result-list {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.selection-result-item__error {
+    color: rgb(230, 5, 50);
+    font-weight: 700;
+}

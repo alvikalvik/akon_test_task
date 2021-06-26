@@ -1,3 +1,4 @@
+import "./SelectionResult.css";
 import Preloader from "../common/Preloader/Preloader";
 
 const SelectionResult = ({isFetching, selectionResultData}) => {
