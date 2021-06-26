@@ -10,7 +10,7 @@ function App() {
     const [signalsData, setSignalsData] = useState({});
     const [rangesData, setRangesData] = useState({});
     const [wiresData, setWiresData] = useState({});
-    const [selectionResultData, setSelectionResultData] = useState({});
+    const [selectionResultData, setSelectionResultData] = useState([{}]);
 
     const signalsTableName = 'nomenclatures_table_1';
     const rangesTableName = 'nomenclatures_table_2';
@@ -21,6 +21,17 @@ function App() {
         return dbAPI.requestEntireTableData(tableName)
             .then(data => {
                 settingFunction(data);                                
+            });
+    };    
+    const selectData = (tableName, signalsInput, rangesInput, wiresInput) => {
+        setIsFetching(true);
+        dbAPI.makeSelection(tableName, signalsInput, rangesInput, wiresInput)
+            .then(data => {
+                setSelectionResultData(data);                                
+            })
+            .catch(err => console.log(err))
+            .finally( () => {
+                setIsFetching(false);
             });
     };    
 
@@ -51,6 +62,7 @@ function App() {
                 signalsData={signalsData}
                 rangesData={rangesData}
                 wiresData={wiresData}
+                selectData={selectData}
             />
             <SelectionResult
                 isFetching={isFetching}

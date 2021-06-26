@@ -21,7 +21,11 @@ if ($tablename === nomenclaturestest) {
     if ($channel1 && $channel2 && $channel3) {
         $sql = "SELECT * FROM `$tablename` WHERE (channels LIKE '$channel1,$channel2,$channel3' AND channels LIKE '%,%,%') OR (channels LIKE '$channel1,$channel2' AND channels NOT LIKE '%,%,%') ";
     } else {        
-        echo json_encode("Channel parameters are incorrect");
+        echo '
+            [
+                {"message":"Channel parameters are incorrect"}
+            ]
+        ';
     }    
     
 } else {
@@ -39,7 +43,11 @@ if ($sql) {
     }
     echo json_encode($emparray);
     } else {
-    echo json_encode("0 results");
+        echo '[
+            {
+                "message":"0 results"        
+            }
+        ]';
     }
 }
 

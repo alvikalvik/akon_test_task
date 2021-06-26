@@ -2,7 +2,7 @@
 import Preloader from "../common/Preloader/Preloader";
 import { Formik, Form, Field } from 'formik';
 
-const MainForm = ({ isInitialised, isFetching, signalsData, rangesData, wiresData }) => {
+const MainForm = ({ isInitialised, isFetching, signalsData, rangesData, wiresData, selectData }) => {
 
     if (!isInitialised) {
         return (
@@ -21,12 +21,15 @@ const MainForm = ({ isInitialised, isFetching, signalsData, rangesData, wiresDat
     });
 
     return (
-        <Formik                        
-            onSubmit={(values, { setSubmitting }) => {
-                setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2));
-                    setSubmitting(false);
-                }, 400);
+        <Formik  
+            initialValues={{ signalsInput: '%', rangesInput: '%', wiresInput: '%'}}                      
+            onSubmit={(values) => {
+                const { signalsInput, rangesInput, wiresInput } = values;
+                const tableName = 'nomenclaturestest';
+                selectData(tableName, signalsInput, rangesInput, wiresInput);
+                // setTimeout(() => {
+                //     alert(JSON.stringify(values, null, 2));                    
+                // }, 400);
             }}
         >
             { () => (
